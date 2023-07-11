@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Age calculator app</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .age-calculator {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      width: 500px;
+      text-align: center;
+    }
+
+    .age-calculator h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      flex-grow: 1;
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 18px;
+    }
+
+    .btn {
+      background-color: #444;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 6px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .result {
+      font-size: 20px;
+      margin-top: 30px;
+    }
+
+    .result p {
+      margin-bottom: 10px;
+    }
+
+    .attribution {
+      font-size: 14px;
+      text-align: center;
+      color: #888;
+      margin-top: 30px;
+    }
+
+    .attribution a {
+      color: #444;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="age-calculator">
+    <h1>Age calculator</h1>
+
+    <div class="input-group">
+      <input type="number" placeholder="Day" id="day" min="1" max="31">
+      <input type="number" placeholder="Month" id="month" min="1" max="12">
+      <input type="number" placeholder="Year" id="year" min="1900" max="2099">
+    </div>
+
+    <button class="btn" id="calculate">Calculate</button>
+
+    <div class="result">
+      <p>Your age is:</p>
+      <p id="years"></p>
+      <p id="months"></p>
+      <p id="days"></p>
+    </div>
+
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      <br>Coded by <a href="https://github.com/GH0STH4CKER/" target="_blank">Dimuth De Zoysa</a>.
+    </div>
+  </div>
+
+
+  <script>
+    const calculateAge = () => {
+      const birthDate = new Date(
+        parseInt(document.getElementById('year').value),
+        parseInt(document.getElementById('month').value) - 1,
+        parseInt(document.getElementById('day').value)
+      );
+
+      const today = new Date();
+      const ageInMilliseconds = today - birthDate;
+
+      const millisecondsPerDay = 1000 * 60 * 60 * 24;
+      const millisecondsPerMonth = millisecondsPerDay * 30.436875;
+      const millisecondsPerYear = millisecondsPerDay * 365.25;
+
+      const ageYears = Math.floor(ageInMilliseconds / millisecondsPerYear);
+      const ageMonths = Math.floor((ageInMilliseconds % millisecondsPerYear) / millisecondsPerMonth);
+      const ageDays = Math.floor((ageInMilliseconds % millisecondsPerMonth) / millisecondsPerDay);
+
+      document.getElementById('years').textContent = `${ageYears} years`;
+      document.getElementById('months').textContent = `${ageMonths} months`;
+      document.getElementById('days').textContent = `${ageDays} days`;
+    }
+
+    document.getElementById('calculate').addEventListener('click', calculateAge);
+  </script>
+</body>
+</html>
