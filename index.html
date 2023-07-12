@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,10 @@
       background-color: #ffffff;
       padding: 40px;
       border-radius: 10px;
-      width: 500px;
+      width: 700px;
+      height: 450px;
+      max-width: 800px;
+      max-height: 514px;
       text-align: center;
       border-bottom-right-radius: 120px;
       position: static;
@@ -38,29 +42,64 @@
       position: absolute;
 
     }
+      
 
     .input-group {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .input-group input {
+      width: 100%;
       flex-grow: 1;
       padding: 15px;
+      margin:0 0 10px 0;
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 18px;
     }
 
+    .label-group{
+      text-align: left;
+      padding-left: 20px;
+      float:left;
+      width:30%;
+    }
+    .divider {
+      border-top: 1.5px solid hsl(0, 4%, 87%); 
+      margin-top: 100px;
+      position: relative;
+    }
+
     .btn {
-      background-color: #444;
+      background-color: hsl(259, 100%, 65%);
       color: #fff;
-      padding: 15px 30px;
-      border-radius: 6px;
+      padding: 12px;
+      top: -20px;
       font-size: 20px;
       cursor: pointer;
       border: none;
+      text-align: center;
+      height: 80px;
+      line-height: 80px;  
+      width: 80px;  
+      font-size: 2em;
+      font-weight: bold;
+      border-radius: 50%;    
+      text-align: center;
+      transition: background-color 0.5s;
+      cursor: pointer;
+      margin-left: 500px;
+    }
+    .btn:before {
+      content: "";
+      width: 700;
+      max-width: 800;
+      left: 0;
+      top: 50%;
+      position: absolute;
+      z-index: 119;
+      border-top: 8px solid rgb(56, 56, 56);
+      opacity:.2;
+
+  }
+    .btn:hover {
+      background-color: black;
     }
 
     .result {
@@ -86,17 +125,26 @@
   </style>
 </head>
 <body>
-  <h1 class="heading1">Age calculator</h1>
   <div class="age-calculator">
     
-
-    <div class="input-group">
-      <input type="number" placeholder="Day" id="day" min="1" max="31">
-      <input type="number" placeholder="Month" id="month" min="1" max="12">
-      <input type="number" placeholder="Year" id="year" min="1900" max="2099">
+    <div class="inputwrapper">
+      <label class="label-group">&nbsp;DAY</br>
+      <input class="input-group" type="number" placeholder="DD" id="day" min="1" max="31"></label>
     </div>
+    <div class="inputwrapper">
+      <label class="label-group">&nbsp;MONTH</br>
+      <input class="input-group" type="number" placeholder="MM" id="month" min="1" max="12"></label>
+    </div>
+    <div class="inputwrapper">
+      <label class="label-group">&nbsp;YEAR</br>
+      <input class="input-group" type="number" placeholder="YYYY" id="year" min="1900" max="2099"></label>
+    </div>
+    
+    <!--<div><hr class="divider"></div>-->
 
-    <button class="btn" id="calculate">Calculate</button>
+    <button class="btn" id="calculate" >
+      <img class="dwn-arrw" src="assets\images\icon-arrow.svg" width="50px">
+    </button>
 
     <div class="result">
       <p>Your age is:</p>
